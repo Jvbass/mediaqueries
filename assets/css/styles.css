@@ -1,0 +1,234 @@
+/* estilos generales  */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.crossed-text {
+  color: #7a7a7a;
+  font-style: oblique;
+  text-decoration: line-through;
+}
+/* grid areas general */
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  background-color: #f3e9dd;
+  display: grid;
+  grid-template-areas:
+    "Header"
+    "Main"
+    "Footer";
+}
+/* Encabezado */
+header {
+  grid-area: Header;
+  background-color: #dab88b;
+  display: flex;
+  height: 4rem;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  position: fixed;
+  width: 100%;
+}
+
+header a {
+  color: whitesmoke;
+  font-family: 'Old Standard TT', serif;
+
+}
+
+header .toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+/* Menu  */
+aside {
+  grid-area: Aside;
+  position: fixed;
+  margin-top: 4rem;
+  background-color: #b7cadb;
+  height: 100vh;
+  min-width: 40%;
+  padding: 2rem;
+  text-align: center;
+  right: 0;
+  transform: translateX(
+    100%
+  ); /*mueve la seccion aside en el eje x 100% de su ancho a la derecha*/
+  transition: transform 0.5s;
+  /* los cambios de la propiedad transform demora 0.5s */
+}
+
+aside.show {
+  transform: translateX(0);
+  /* clase show qe por java script se llama y se agrega en el html en aside  */
+}
+
+aside i {
+  color: #f0a500;
+}
+aside ul {
+  list-style: none;
+}
+
+aside li {
+  padding: 1rem;
+}
+
+/* Productos  */
+main {
+  margin: 5rem 0;
+  grid-area: Main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 5rem;
+  min-height: calc(100vh - 9rem);
+  /* definimos min-height para el caso que el contenido dentro de main tenga un height menor no se rompa el diseño.calc el 100vh es el 100% del alto menos la suma del alto de header y footer */
+}
+
+  /* elemento select html  */
+.orderby {
+  padding-bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.orderby select {
+  width: 80%;
+  border-radius: 0.5em 0.5em 0.5em 0.5em;
+
+}
+/* galeria de productos  */
+.galery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 0.5em 0.5em 0.5em 0.5em;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 0.5em 0.5em 0 0;
+}
+.card h3 {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.card .btn-reserva {
+  color: #fff;
+  background: #b7cadb;
+  width: 100%;
+  text-align: center;
+  font-style: oblique;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+/* Footer y rrss  */
+footer {
+  grid-area: Footer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  background-color: #b7cadb;
+  height: 5rem;
+}
+
+footer .social {
+  font-size: 1.5rem;  
+}
+
+footer .social i {
+  color: #f0a500;
+
+}
+
+/* Media queries responsive */
+/* tablet dispositivos resolucion sobre 576px*/
+@media (min-width :576px) {
+  .galery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  main {
+    padding: 1rem 3rem;
+  }
+}
+
+/* Escritorio dispositivos sobre 992px  */
+@media (min-width: 768px) {
+  body {
+    display: grid;
+    grid-template-areas:
+    "Header Header Header"
+    "Aside Main Main"
+    "Footer  Main Main"
+    ;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  header .toggle {
+    display: none;
+  }
+
+  main {
+    margin: 2rem 0;
+    padding: 1rem 5rem;
+    min-height: 100vh;
+  }
+  aside {
+    transform: none;
+    position: initial;
+    margin-top: 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .galery-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3.5rem;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: auto;
+  }
+
+}
+
